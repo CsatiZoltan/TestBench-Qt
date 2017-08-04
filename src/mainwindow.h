@@ -11,7 +11,7 @@ class MainWindow;
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+    Q_OBJECT // to use the signal-slot mechanism
 
 public:
     explicit MainWindow(QWidget *parent = 0);

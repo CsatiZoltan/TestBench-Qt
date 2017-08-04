@@ -24,6 +24,6 @@ void MainWindow::on_pushModal_clicked()
 void MainWindow::on_pushModeless_clicked()
 {
     ModelessWindow* mlw = new ModelessWindow(this);
-    mlw->setModal(false); // anyway, this is by default
+    mlw->setModal(false); // anyway, modeless is by default
     mlw->show();
 }
