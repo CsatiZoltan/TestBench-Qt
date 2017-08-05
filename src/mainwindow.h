@@ -20,8 +20,8 @@ public:
 private slots:
 
     void on_pushModal_clicked();
-
     void on_pushModeless_clicked();
+    void on_actionExit_triggered();
 
 private:
     Ui::MainWindow *ui;

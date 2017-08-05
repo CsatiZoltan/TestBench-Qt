@@ -1,5 +1,5 @@
 # Name of the project
-TARGET = Template
+TARGET = TestBench
 
 # Application (executable)
 TEMPLATE = app

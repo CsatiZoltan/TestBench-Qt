@@ -27,3 +27,11 @@ void MainWindow::on_pushModeless_clicked()
     mlw->setModal(false); // anyway, modeless is by default
     mlw->show();
 }
+
+
+void MainWindow::on_actionExit_triggered()
+{
+    // No need to connect a signal to a slot thanks to the automatic connections:
+    // http://doc.qt.io/qt-5/designer-using-a-ui-file.html#automatic-connections
+    QApplication::quit();
+}
