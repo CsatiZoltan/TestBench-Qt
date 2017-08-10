@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
+#include <QCloseEvent>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -8,10 +11,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 }
 
+
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
 
 void MainWindow::on_pushModal_clicked()
 {
@@ -33,5 +38,25 @@ void MainWindow::on_actionExit_triggered()
 {
     // No need to connect a signal to a slot thanks to the automatic connections:
     // http://doc.qt.io/qt-5/designer-using-a-ui-file.html#automatic-connections
-    QApplication::quit();
+    this->close();
+}
+
+
+// Emitted when the "close" method of QMainWindow (and therefore QWindget) is called or
+// when the close (X) button of the window is clicked on
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    QMessageBox closeDialog;
+    closeDialog.setIcon(QMessageBox::Warning);
+    closeDialog.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    closeDialog.setDefaultButton(QMessageBox::Yes);
+    closeDialog.setEscapeButton(QMessageBox::No);
+    closeDialog.setText("<b>Main text</b>");
+    closeDialog.setInformativeText("Informative text");
+    closeDialog.setDetailedText("Some details...");
+    int answer = closeDialog.exec();
+    if (answer == QMessageBox::Yes)
+        event->accept();
+    else
+        event->ignore();
 }
